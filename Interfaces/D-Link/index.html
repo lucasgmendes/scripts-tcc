@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Type" content="text/html; ">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        HTML {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+
+        BODY {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif;
+            MARGIN: 1px 0px auto;
+            BACKGROUND-COLOR: #757575;
+        }
+
+        DIV {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+
+        #header_container {
+            BORDER-RIGHT: #f1f1f1 1px solid;
+            PADDING-RIGHT: 0px;
+            BORDER-TOP: #f1f1f1 0px;
+            PADDING-LEFT: 0px;
+            PADDING-BOTTOM: 5px;
+            BORDER-LEFT: #f1f1f1 1px solid;
+            WIDTH: 100%;
+            COLOR: white;
+            PADDING-TOP: 5px;
+            BORDER-BOTTOM: #f1f1f1 0px;
+            HEIGHT: 20px;
+            BACKGROUND-COLOR: #404343
+        }
+
+        #box_header {
+            BORDER-RIGHT: #f36d23 1px solid;
+            BORDER-TOP: #f36d23 1px solid;
+            BORDER-LEFT: #f36d23 1px solid;
+            BORDER-BOTTOM: #f36d23 1px solid;
+            BACKGROUND-COLOR: #dfdfdf;
+            MARGIN: 5px 0px 0px;
+            WIDTH: 100%;
+        }
+
+        #box_header .content {
+            PADDING-LEFT: 16px;
+            PADDING-TOP: 16px;
+            PADDING-RIGHT: 16px;
+            PADDING-BOTTOM: 16px;
+        }
+
+        #masthead_container {
+            BORDER-RIGHT: #f1f1f1 1px solid;
+            PADDING-RIGHT: 0px;
+            BORDER-TOP: #f1f1f1 0px;
+            PADDING-LEFT: 0px;
+            PADDING-BOTTOM: 0px;
+            MARGIN: 0px;
+            BORDER-LEFT: #f1f1f1 1px solid;
+            WIDTH: 100%;
+            PADDING-TOP: 0px;
+            BORDER-BOTTOM: #f1f1f1 0px;
+            BACKGROUND-COLOR: #404343
+        }
+
+        #maincontent {
+            PADDING-RIGHT: 5px;
+            PADDING-LEFT: 5px;
+            PADDING-BOTTOM: 5px;
+            COLOR: #000000;
+            PADDING-TOP: 5px;
+            BACKGROUND-COLOR: #f1f1f1
+        }
+
+        #header_container TD {
+            PADDING-RIGHT: 5px;
+            PADDING-LEFT: 5px;
+            PADDING-BOTTOM: 0px;
+            PADDING-TOP: 0px;
+            WHITE-SPACE: nowrap
+        }
+
+        #header_container A:link {
+            FONT-SIZE: 11px;
+            COLOR: #f1f1f1;
+            TEXT-DECORATION: underline
+        }
+
+        #header_container A:visited {
+            FONT-SIZE: 11px;
+            COLOR: #f1f1f1;
+            TEXT-DECORATION: underline
+        }
+
+        #header_container A:active {
+            FONT-SIZE: 11px;
+            COLOR: #f1f1f1;
+            TEXT-DECORATION: underline
+        }
+
+        #header_container A:hover {
+            FONT-SIZE: 11px;
+            COLOR: #f1f1f1;
+            TEXT-DECORATION: underline
+        }
+
+        #masthead_container {
+            BORDER-RIGHT: #f1f1f1 1px solid;
+            PADDING-RIGHT: 0px;
+            BORDER-TOP: #f1f1f1 0px;
+            PADDING-LEFT: 0px;
+            PADDING-BOTTOM: 0px;
+            MARGIN: 0px;
+            BORDER-LEFT: #f1f1f1 1px solid;
+            WIDTH: 100%;
+            PADDING-TOP: 0px;
+            BORDER-BOTTOM: #f1f1f1 0px;
+            BACKGROUND-COLOR: #404343
+        }
+
+        #masthead_container TD {
+            PADDING-RIGHT: 0px;
+            PADDING-LEFT: 0px;
+            BACKGROUND-IMAGE: url(img_bg_masthead.gif);
+            PADDING-BOTTOM: 0px;
+            MARGIN: 0px;
+            PADDING-TOP: 0px;
+            BACKGROUND-REPEAT: repeat;
+            TEXT-ALIGN: right
+        }
+
+        .formarea .form_label_40 {
+            PADDING-RIGHT: 10px ! important;
+            FONT-WEIGHT: bold;
+            WIDTH: 40%;
+            TEXT-ALIGN: right
+        }
+
+        #copyright {
+            PADDING-RIGHT: 0px;
+            PADDING-LEFT: 0px;
+            FONT-SIZE: 11px;
+            PADDING-BOTTOM: 10px;
+            MARGIN: 0px auto;
+            COLOR: #f1f1f1;
+            PADDING-TOP: 10px;
+            TEXT-ALIGN: center
+        }
+
+        #box_header {
+            BORDER-RIGHT: #f36d23 1px solid;
+            BORDER-TOP: #f36d23 1px solid;
+            BORDER-LEFT: #f36d23 1px solid;
+            BORDER-BOTTOM: #f36d23 1px solid;
+            BACKGROUND-COLOR: #dfdfdf;
+            MARGIN: 5px 0px 0px;
+            WIDTH: 100%;
+        }
+
+        #box_header .topheader {
+            PADDING-RIGHT: 5px;
+            PADDING-LEFT: 10px;
+            FONT-WEIGHT: bold;
+            FONT-SIZE: 12px;
+            PADDING-BOTTOM: 5px;
+            MARGIN: 0px -10px 5px;
+            TEXT-TRANSFORM: uppercase;
+            COLOR: #000000;
+            PADDING-TOP: 5px;
+            LETTER-SPACING: 1px;
+            BACKGROUND-COLOR: #f36d23
+        }
+
+        P {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+
+        TD {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+
+        INPUT {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+
+        TEXTAREA {
+            FONT-SIZE: 12px;
+            FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="log.js"></script>
+    <script language="javascript">
+        var indx = "3";
+
+        var loginErrorAccount = "0";
+
+        var AjaxReq = null;
+
+        var thread;
+
+        function createRequest() {
+            var request = null;
+            try { request = new XMLHttpRequest(); }
+            catch (trymicrosoft) {
+                try { request = new ActiveXObject("Msxml2.XMLHTTP"); }
+                catch (othermicrosoft) {
+                    try { request = new ActiveXObject("Microsoft.XMLHTTP"); }
+                    catch (failed) { request = null; }
+                }
+            }
+            if (request == null) alert("Error creating request object !");
+            return request;
+        }
+
+        function getNewPic() {
+            var i = parseInt(Math.random() * 10000);
+            send_request("loginPicIndex.asp?id=" + i, callback_get_nat_type);
+        }
+
+        function callback_get_nat_type() {
+            if (AjaxReq != null && AjaxReq.readyState == 4 && AjaxReq.status == 200) {
+                eval(AjaxReq.responseText);
+                if (AjaxReq.responseText.substring(1, 2) != '"') {
+                    var cfginprogress = parseInt(AjaxReq.responseText.substring(1, 2));
+                    var imprison = 0;
+                    if (imprison == 0) {
+                        imprison = 1;
+                        // document.getElementById("picId").src = '../var/' + cfginprogress + 'a.jpeg';
+                        document.getElementById("picId").src = './var/3a.jpeg';
+                    }
+                }
+                if (AjaxReq != null) delete AjaxReq;
+            }
+        }
+
+        function send_request(url, callback) {
+            if (AjaxReq == null) AjaxReq = createRequest();
+            AjaxReq.open("GET", url, true);
+            AjaxReq.onreadystatechange = callback;
+            AjaxReq.send(null);
+        }
+
+
+
+        function showloginbutton() {
+            var f = document.getElementById("login_frm");
+            f.loginId.disabled = 0;
+            document.getElementById("loginerrorinfo").innerHTML = "";
+        }
+
+
+        function BrowserCheck() {
+            var b = navigator.appName
+            if (b == "Netscape") this.b = "ns"
+            else if (b == "Microsoft Internet Explorer") this.b = "ie"
+            else if (b == "Opera") this.b = "opera"
+            else this.b = b
+            //if(navigator.userAgent.indexOf("Firefox",0) != "-1")
+            //this.firefox = true;
+            this.version = navigator.appVersion
+            this.v = parseInt(this.version)
+            this.ns = (this.b == "ns" && this.v >= 4)
+            this.ns4 = (this.b == "ns" && this.v == 4)
+            this.ns5 = (this.b == "ns" && this.v == 5)
+            this.ie = (this.b == "ie" && this.v >= 4)
+            this.opera = (this.b == "opera")
+            this.ie4 = (this.version.indexOf('MSIE 4') > 0)
+            this.ie5 = (this.version.indexOf('MSIE 5') > 0)
+            this.ie6 = (this.version.indexOf('MSIE 6') > 0)//joe add
+            this.mac = (this.version.indexOf('Macintosh') > 0)
+            this.min = (this.ns || this.ie || this.opera)
+            //alert("navigator.appName="+b+"  navigator.appVersion="+navigator.appVersion);
+        }
+        is = new BrowserCheck();
+
+        function $() {
+            var elements = new Array();
+
+            for (var i = 0; i < arguments.length; i++) {
+                var element = arguments[i];
+                if (typeof element == 'string')
+                    element = document.getElementById(element);
+
+                if (arguments.length == 1)
+                    return element;
+
+                elements.push(element);
+            }
+
+            return elements;
+        }
+
+        function DisplayShow(element, arg) {
+            if (is.firefox || is.ns || is.opera) {
+                if ($) {
+                    if (arg == "tr")
+                        $(element).style.display = "table-row";
+                    if (arg == "td")
+                        $(element).style.display = "table-cell";
+                    if (arg == "table" || arg == "div")
+                        $(element).style.display = "table";
+                }
+            }
+            else if (document.all) {
+                document.all[element].style.display = "block";
+            }
+            else {
+                document.layers[element].display = "block";
+            }
+        }
+        function DisplayHide(element) {
+            if ($) {
+                $(element).style.display = "none";
+            }
+            else if (document.all) {
+                document.all[element].style.display = "none";
+            }
+            else {
+                document.layers[element].display = "none";
+            }
+        }
+
+        function uiDoOnload() {
+            var f = document.getElementById("login_frm");
+
+            DisplayShow('genpic_enable', "tr");
+            DisplayShow('genpic_pic', "tr");
+
+            document.getElementById("right_number").innerHTML = "<img id=\"picId\"   src='./var/3a.jpeg' width=120 height=50>&nbsp;&nbsp;<a href='javascript:getNewPic()' >Refresh</a>";
+
+            f.web_login_name.value = "";
+            f.web_login_pass.value = "";
+
+            DisplayHide("loginerror")
+
+            if (loginErrorAccount != "0") {
+                DisplayShow('loginerror', "tr");
+                if (loginErrorAccount == "3") {
+                    f.loginId.disabled = 1;
+                    setTimeout("showloginbutton()", 60000)
+                    document.getElementById("loginerrorinfo").innerHTML = "This is the <font color='red'>third </font> time you enter wrong! After a minute, please try again.";
+                }
+                else {
+                    var times = "";
+                    f.loginId.disabled = 0;
+                    if (loginErrorAccount == "1")
+                        times = "first";
+                    else
+                        times = "second";
+                    document.getElementById("loginerrorinfo").innerHTML = "This is the <font color='red'>" + times + "  </font>time you enter wrong!";
+                }
+
+            }
+
+        }
+
+        function uiSave() {
+            var f = document.getElementById("login_frm");
+
+            if (f.web_login_name.value == "") {
+                alert("Username can't be empty!");
+                return false;
+            }
+
+            if (document.getElementById("VER_CODE").value == "") {
+                alert("Validate can't be empty!");
+                return false;
+            }
+
+        }
+
+    </script>
+</head>
+
+<body onload="uiDoOnload()" marginwidth="0" marginheight="0" class="vsc-initialized">
+    <form name="login_frm" id="login_frm" onsubmit="return uiSave();" action="" method="post">
+        <div align="center" id="tblmain">
+            <table cellspacing="0" width="760">
+                <tbody>
+                    <tr>
+                        <td>
+                            <table cellspacing="0" width="760">
+                                <tbody>
+                                    <tr>
+                                        <td id="masthead_container" width="760"><img alt="" src="logo.gif" width="760">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" summary="" border="0" width="100%" style="background-color:white"
+                                height="300">
+                                <tbody>
+                                    <tr>
+                                        <td align="center">
+                                            <div id="maincontent" style="width:600">
+                                                <table id="box_header" border="0" cellspacing="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="topheader">
+                                                                Login
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="content">
+                                                                <p> Welcome to Web Management</p>
+                                                                <table class="formarea" border="0" cellspacing="0"
+                                                                    cellpadding="0" width="100%">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="form_label_40">Username&nbsp;:
+                                                                            </td>
+                                                                            <td><input type="text" name="web_login_name"
+                                                                                    id="web_login_name" class="text"
+                                                                                    size="20"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="form_label_40">
+                                                                                <b>Password&nbsp;:</b>
+                                                                            </td>
+                                                                            <td><input type="password"
+                                                                                    name="web_login_pass"
+                                                                                    id="web_login_pass" class="text"
+                                                                                    size="20"></td>
+                                                                        </tr>
+                                                                        <tr id="genpic_enable"
+                                                                            style="display: table-row;">
+                                                                            <td class="form_label_40">
+                                                                                <b>Validate&nbsp;:</b>
+                                                                            </td>
+                                                                            <td><input type="text" name="VER_CODE"
+                                                                                    id="VER_CODE" class="text"
+                                                                                    size="20"></td>
+                                                                        </tr>
+                                                                        <tr id="genpic_pic" style="display: table-row;">
+                                                                            <td class="form_label_40"></td>
+                                                                            <td>
+                                                                                <div id="right_number"><img id="picId"
+                                                                                        src="./var/3a.jpeg" width="120"
+                                                                                        height="50">&nbsp;&nbsp;<a
+                                                                                        href="javascript:getNewPic()">Refresh</a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr id="loginerror" style="display:none">
+                                                                            <td align="center" colspan="2">
+                                                                                <div id="loginerrorinfo"></div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <p align="center"><input name="loginId" type="submit"
+                                                                        id="loginIDbtn" value="LOGIN"></p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="copyright">Copyright &copy; 2008-2010 D-Link Systems, Inc.</div>
+        </div>
+    </form>
+</body>
+
+</html>
